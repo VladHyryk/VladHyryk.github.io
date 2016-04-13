@@ -1,0 +1,34 @@
+body {
+    background: white;
+}
+th, td {
+    padding: 10px;
+}
+
+.armor-list-table, .armor-list-table td, .armor-list-table th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    color: black;
+    width: auto;
+}
+.armor-list-table td img{
+    width: 250px;
+}
+.maincontext{
+    background: white;
+    margin: auto;
+    text-align: center;
+    color: white;
+}
+.loginbutton{
+background-image: url("../../resources/images/btn/GrayRoundedButton.png");
+    width: 400px;
+    height: 84px;
+}
+.table-images{
+    width: 200px;
+    height: auto;
+}
+.error{
+    color: red;
+}
