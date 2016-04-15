@@ -18,7 +18,7 @@ public class BodyArmorRepository {
         this.sessionFactory.getCurrentSession().save(bodyArmor);
     }
 
-    public List<BodyArmor> listAll() {
+    public List listAll() {
         return this.sessionFactory.getCurrentSession().createQuery("from BodyArmor").list();
     }
 

@@ -8,9 +8,9 @@
        http://www.springframework.org/schema/security/spring-security.xsd">
 
        <security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>
-       <security:http use-expressions="true" pattern="resources/css/main.css">
+       <security:http use-expressions="true">
               <security:intercept-url pattern="/**" access="permitAll"/>
-              <security:form-login/>
+              <security:form-login default-target-url="/" always-use-default-target="true" authentication-failure-url="/LoginFail"/>
               <security:logout logout-success-url="/" delete-cookies="JSESSIONID"/>
               <security:remember-me/>
               <security:session-management invalid-session-url="/">

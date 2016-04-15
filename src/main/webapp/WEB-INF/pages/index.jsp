@@ -1,58 +1,60 @@
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
-    <script src="<c:url value="/resources/s/ArmorUtils.js" />"></script>
-     <title>Stone Forge</title>
-</head>
-<body>
-</div>
-<div class="maincontext">
-        <div class="login-link-container">
-        <sec:authorize access="isAnonymous()">
-            <p>
-                <a href="/spring_security_login">Sign In</a>
-            </p>
-        </sec:authorize>
-        <sec:authorize access="isAuthenticated()">
-            <a href="/j_spring_security_logout">Sign Out</a>
-        </sec:authorize>
-    </div>
-    <c:if test="${!empty bodyarmors}">
-        <table class="armor-list-table">
-            <tr>
-                <th>&nbsp;</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Prise</th>
-                <th>Size</th>
-                <sec:authorize access="hasRole('admin')">
-                    <th>&nbsp;</th>
-                </sec:authorize>
-            </tr>
-            <c:forEach items="${bodyarmors}" var="bodyarmor">
+<t:template>
+    <div class="maincontext">
+    <sec:authorize access="isAnonymous()">
+    <t:login></t:login>
+    </sec:authorize>
+    <sec:authorize access="isAuthenticated()">
+        </div>
+        <%--@elvariable id="bodyarmors" type="java"--%>
+        <c:if test="${!empty bodyarmors}">
+            <table class="armor-list-table">
+
                 <tr>
-                    <%--</td>http://localhost:8080/resources/images/slides/arms1.jpg--%>
-                    <td><img src="${bodyarmor.img}">
-                    <td>${bodyarmor.name}</td>
-                    <td>${bodyarmor.description}</td>
-                    <td>${bodyarmor.price}</td>
-                    <td>${bodyarmor.size}</td>
+                    <th>&nbsp;</th>
+                    <th class="name">Name</th>
+                    <th class="description">Description</th>
+                    <th class="price">Price</th>
+                    <th class="size">Size</th>
                     <sec:authorize access="hasRole('admin')">
-                        <%--<td><a href="deleteBodyArmor/${bodyarmor.id}">Delete</a></td>--%>
-                        <td><a href="javascript:ArmorUtils.deleteBodyArmor(${bodyarmor.id})">Delete</a></td>
+                        <th>&nbsp;</th>
                     </sec:authorize>
                 </tr>
-            </c:forEach>
-        </table>
-    </c:if>
-    <sec:authorize access="isAuthenticated()">
-        <a href="addBodyArmor">Add Body Armor</a>
+                    <%--@elvariable id="bodyarmors" type="java.util.List"--%>
+                <c:forEach items="${bodyarmors}" var="bodyarmor">
+                    <tr>
+                        <td><img src="${bodyarmor.img}">
+                        <td>${bodyarmor.name}</td>
+                        <td>${bodyarmor.description}</td>
+                        <td>${bodyarmor.price}</td>
+                        <td>${bodyarmor.size}</td>
+                        <sec:authorize access="hasRole('admin')">
+                            <td><a href="javascript:ArmorUtils.deleteBodyArmor(${bodyarmor.id})"><button type="button" class="myButton">Delete</button></a></td>
+                        </sec:authorize>
+                    </tr>
+                </c:forEach>
+            </table>
+        </c:if>
+        <div class="login-link-container">
+            <a href="${pageContext.request.contextPath}/j_spring_security_logout"><button type="button" class="myButton">Sign Out</button> </a>
+    <sec:authorize access="hasRole('admin')">
+            <a href="addBodyArmor"><button type="button" class="myButton">Add Body Armor</button></a>
     </sec:authorize>
-</div>
-</body>
-</html>
+    </sec:authorize>
+    </div>
+    <%--Links for social networks--%>
+    <div class="cell">
+        <div class="share-wrapper below">
+            <div class="rc50 share-action icon-share"></div>
+            <div class="share-container rc50">
+                <a class="share-btn tl icon-google-plus" href='#'></a>
+                <a class="share-btn tr icon-twitter" href='#'></a>
+                <a class="share-btn br icon-facebook" href='#'></a>
+                <a class="share-btn bl icon-pinterest" href='#'></a>
+            </div>
+        </div>
+    </div>
+</t:template>

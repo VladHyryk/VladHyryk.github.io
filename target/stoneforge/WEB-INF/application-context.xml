@@ -16,7 +16,7 @@
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <import resource="security-context.xml"></import>
-
+    <import resource="mvc-dispatcher-servlet.xml"></import>
     <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory">
 

@@ -14,9 +14,12 @@ import ua.kris.forge.repository.BodyArmorRepository;
 import ua.kris.forge.validation.ArmorValidator;
 
 import java.util.List;
+import org.apache.log4j.Logger;
 
 @Controller
 public class BodyArmorController {
+    private static final Logger log = Logger.getLogger(BodyArmorController.class);
+
     private BodyArmorRepository bodyArmorRepository;
 
     private ArmorValidator armorValidator;
@@ -31,7 +34,7 @@ public class BodyArmorController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET )
     public String getBodyArmors(Model model) {
-        List<BodyArmor> bodyArmors = this.bodyArmorRepository.listAll();
+        List bodyArmors = this.bodyArmorRepository.listAll();
         model.addAttribute("bodyarmors", bodyArmors);
 
         return "index";
@@ -61,6 +64,7 @@ public class BodyArmorController {
     @PreAuthorize("hasRole('admin')")
     public String deleteBodyArmor(@PathVariable Integer id){
         this.bodyArmorRepository.removeBodyArmor(id);
+        log.info("Это информационное сообщение!");
         return "redirect:/";
     }
 }
