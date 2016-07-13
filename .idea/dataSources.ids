@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - forge@localhost" uuid="ba794f6d-4a55-4ed3-b812-63f20117a8d2">
+    <database-info product="MySQL" version="5.7.11-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="forge"/>
+    <table name="bodyarmor" schema="" catalog="forge" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR" precision="2000" scale="0" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="size" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="img" sqlType="MEDIUMBLOB" precision="16777215" scale="0" nullable="true" jdbcType="-4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="userorder" schema="" catalog="forge" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="necksize" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="chestsize" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="stomachmeasurement" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="waistsize" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="necktowaist" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="sleevemeasurement" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="risemeasurement" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="inseamlength" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="thighsize" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="calfsize" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="orderimg" sqlType="MEDIUMBLOB" precision="16777215" scale="0" nullable="false" jdbcType="-4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="users" schema="" catalog="forge" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="12" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+  </data-source>
+</component>

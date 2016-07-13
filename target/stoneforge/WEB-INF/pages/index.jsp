@@ -5,14 +5,13 @@
 <t:template>
     <div class="maincontext">
     <sec:authorize access="isAnonymous()">
-    <t:login></t:login>
+        <t:login></t:login>
     </sec:authorize>
     <sec:authorize access="isAuthenticated()">
         </div>
         <%--@elvariable id="bodyarmors" type="java"--%>
         <c:if test="${!empty bodyarmors}">
             <table class="armor-list-table">
-
                 <tr>
                     <th>&nbsp;</th>
                     <th class="name">Name</th>
@@ -22,6 +21,7 @@
                     <sec:authorize access="hasRole('admin')">
                         <th>&nbsp;</th>
                     </sec:authorize>
+                    <th>&nbsp;</th>
                 </tr>
                     <%--@elvariable id="bodyarmors" type="java.util.List"--%>
                 <c:forEach items="${bodyarmors}" var="bodyarmor">
@@ -32,17 +32,31 @@
                         <td>${bodyarmor.price}</td>
                         <td>${bodyarmor.size}</td>
                         <sec:authorize access="hasRole('admin')">
-                            <td><a href="javascript:ArmorUtils.deleteBodyArmor(${bodyarmor.id})"><button type="button" class="myButton">Delete</button></a></td>
+                            <td><a href="javascript:ArmorUtils.deleteBodyArmor(${bodyarmor.id})">
+                                <button type="button" class="myButton">Delete</button>
+                            </a></td>
+                        </sec:authorize>
+                        <sec:authorize access="hasRole('user')">
+                        <td><a href="addOrder">
+                            <button type="button" class="myButton">Order</button>
+                        </a></td>
                         </sec:authorize>
                     </tr>
                 </c:forEach>
             </table>
         </c:if>
         <div class="login-link-container">
-            <a href="${pageContext.request.contextPath}/j_spring_security_logout"><button type="button" class="myButton">Sign Out</button> </a>
-    <sec:authorize access="hasRole('admin')">
-            <a href="addBodyArmor"><button type="button" class="myButton">Add Body Armor</button></a>
-    </sec:authorize>
+        <a href="${pageContext.request.contextPath}/j_spring_security_logout">
+            <button type="button" class="myButton">Sign Out</button>
+        </a>
+        <sec:authorize access="hasRole('admin')">
+            <a href="addBodyArmor">
+                <button type="button" class="myButton">Add Body Armor</button>
+            </a>
+            <a href="orders">
+                <button type="button" class="myButton">Order List</button>
+            </a>
+        </sec:authorize>
     </sec:authorize>
     </div>
     <%--Links for social networks--%>

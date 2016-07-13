@@ -1,4 +1,3 @@
-
 function _ArmorUtils(){
 
     this.deleteBodyArmor = function(id){
